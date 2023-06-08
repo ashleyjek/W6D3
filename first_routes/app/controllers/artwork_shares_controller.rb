@@ -1,7 +1,10 @@
 class ArtworkSharesController < ApplicationController
-    
+  def index
+    render json: ArtworkShare.all
+  end
+
     def create
-        artwork_share = ArtworkShare.new(params.require(:artwork_share).permit(artwork_share_params))
+        artwork_share = ArtworkShare.new(artwork_share_params)
         if artwork_share.save
           render json: artwork_share
         else
@@ -10,9 +13,9 @@ class ArtworkSharesController < ApplicationController
       end
 
     def destroy 
-        artwork_share = Artworkshare.find(params[:id])
+        artwork_share = ArtworkShare.find(params[:id])
         if artwork_share.destroy
-            render json: artwork_params
+            render json: artwork_share
         else 
             # redirect_to artwork_share_url
             render json: artwork_share.errors.full_messages,status: :unprocessable_entity
