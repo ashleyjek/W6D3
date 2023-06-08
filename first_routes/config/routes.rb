@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
   resources :artworks, only: [:create, :destroy, :index, :show, :update]
   resources :artwork_shares, only: [:index, :create, :destroy]
+  resources :comments, only: [:create, :destroy, :index]
 
   # Defines the root path route ("/")
   # root "articles#index"
