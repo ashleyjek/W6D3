@@ -2,8 +2,8 @@ class ArtworksController < ApplicationController
     def index
         if params[:user_id]
             artworks = Artwork.artworks_for_user_id(params[:user_id])
-            artwork_shares = ArtworkShare.artwork_shares_for_user_id(params[:user_id])
-            render json: artworks + artwork_shares
+            # artwork_shares = ArtworkShare.artwork_shares_for_user_id(params[:user_id])
+            render json: artworks 
         else
             render json: Artwork.all
         end

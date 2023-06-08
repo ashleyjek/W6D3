@@ -1,14 +1,14 @@
 class CommentsController < ApplicationController
-
-
-
-
-
-    
     def index
-
-
-        render json: Comment.all
+        if params[:artwork_id]
+          comments = Comment.where(artwork_id: params[:artwork_id])
+          render json: comments 
+        elsif params[:author_id]
+          comments = Comment.where(author_id: params[:author_id])
+          render json: comments
+        else
+          render json: Comment.all
+      end
     end
 
    

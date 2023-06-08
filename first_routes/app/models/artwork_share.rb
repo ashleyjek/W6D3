@@ -18,7 +18,7 @@ class ArtworkShare < ApplicationRecord
     foreign_key: :viewer_id,
     class_name: :User
 
-    def self.artwork_shares_for_user_id(user_id)
-        self.where(viewer_id: user_id)
-    end
+    # def self.artwork_shares_for_user_id(user_id)
+    #     self.where(viewer_id: user_id)
+    # end
 end

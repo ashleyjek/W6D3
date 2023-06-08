@@ -33,7 +33,10 @@ class Artwork < ApplicationRecord
     dependent: :destroy
 
     def self.artworks_for_user_id(user_id)
-        self.where(artist_id: user_id)
+        # self.where(artist_id: user_id)
+        Artwork
+            .left_outer_joins(:artwork_shares)
+            .where("artist_id = :user_id or viewer_id = :user_id", user_id: user_id)
     end
      
 end
