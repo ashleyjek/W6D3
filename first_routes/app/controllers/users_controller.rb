@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
     def index
-        # if params[:username]
-        #     render json: User.where(username:params[:username])
-        # else
+        if params[:username]
+            users = User.where(username: params[:username])
+            render json: users
+        else
             render json: User.all
-        # end
+        end
     end
 
    
